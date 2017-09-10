@@ -60,7 +60,7 @@ import com.song.model.EmployeeEntity;
       //获取员工数据
       List<EmployeeEntity> list = pi.getList();
       for (EmployeeEntity employee : list) {
-      	System.out.println("ID："+employee.getdId()+"==>Name:"+employee.getEmpName());
+      	System.out.println("ID："+employee.getDId()+"==>Name:"+employee.getEmpName());
       }
   }
 

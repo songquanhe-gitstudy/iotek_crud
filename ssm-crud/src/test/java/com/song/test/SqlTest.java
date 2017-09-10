@@ -27,6 +27,9 @@ public class SqlTest extends SongBaseTest{
 
 	@Test
 	public void test() {
+		DepartmentEntity departmentEntity = new DepartmentEntity();
+		departmentEntity.setDeptName("上海网鱼信息科技有限公司");
+		System.out.println("-----"+departmentEntity.getDeptName()+"----------");
 		
 		departmentEntityDao.insertSelective(new DepartmentEntity(null, "桌面组"));
 		/*employeeEntityDao.insertSelective(new EmployeeEntity(null, 1, "千寻", "女", "qianxun@qq.com"));
