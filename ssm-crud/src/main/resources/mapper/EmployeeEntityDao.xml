@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.song.dao.EmployeeEntityDao">
+	<resultMap id="BaseResultMap" type="com.song.model.EmployeeEntity">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="d_id" jdbcType="INTEGER" property="dId" />
+		<result column="emp_name" jdbcType="VARCHAR" property="empName" />
+		<result column="emp_gender" jdbcType="VARCHAR" property="empGender" />
+		<result column="email" jdbcType="VARCHAR" property="email" />
+	</resultMap>
+	<resultMap id="BaseResultMapWithDept" type="com.song.model.EmployeeEntity">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="d_id" jdbcType="INTEGER" property="dId" />
+		<result column="emp_name" jdbcType="VARCHAR" property="empName" />
+		<result column="emp_gender" jdbcType="VARCHAR" property="empGender" />
+		<result column="email" jdbcType="VARCHAR" property="email" />
+		<!--联合查询 -->
+		<association property="departmentEntity" javaType="com.song.model.DepartmentEntity">
+			<result column="id" jdbcType="INTEGER" property="id" />
+			<result column="dept_name" jdbcType="VARCHAR" property="deptName" />
+		</association>
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, d_id, emp_name, emp_gender, email
+	</sql>
+	<sql id="BaseColumnListWithDept">
+		e.id, e.d_id, e.emp_name, e.emp_gender, e.email, d.id,
+		d.dept_name
+	</sql>
+
+	<select id="findAll" resultMap="BaseResultMapWithDept">
+		select
+		<include refid="BaseColumnListWithDept" />
+		from t_employee e left join t_dept d on e.d_id = d.id
+	</select>
+
+	<select id="findByid" resultMap="BaseResultMapWithDept">
+		select
+		<include refid="BaseColumnListWithDept" />
+		from t_employee e left join t_dept d on e.d_id = d.id
+		where e.id = #{songId}
+	</select>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_employee
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		t_employee
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.song.model.EmployeeEntity">
+		insert into t_employee (id,
+		d_id, emp_name,
+		emp_gender, email)
+		values (#{id,jdbcType=INTEGER},
+		#{dId,jdbcType=INTEGER},
+		#{empName,jdbcType=VARCHAR},
+		#{empGender,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.song.model.EmployeeEntity">
+		insert into t_employee
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="dId != null">
+				d_id,
+			</if>
+			<if test="empName != null">
+				emp_name,
+			</if>
+			<if test="empGender != null">
+				emp_gender,
+			</if>
+			<if test="email != null">
+				email,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="dId != null">
+				#{dId,jdbcType=INTEGER},
+			</if>
+			<if test="empName != null">
+				#{empName,jdbcType=VARCHAR},
+			</if>
+			<if test="empGender != null">
+				#{empGender,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.song.model.EmployeeEntity">
+		update t_employee
+		<set>
+			<if test="dId != null">
+				d_id = #{dId,jdbcType=INTEGER},
+			</if>
+			<if test="empName != null">
+				emp_name = #{empName,jdbcType=VARCHAR},
+			</if>
+			<if test="empGender != null">
+				emp_gender = #{empGender,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				email = #{email,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.song.model.EmployeeEntity">
+		update t_employee
+		set d_id = #{dId,jdbcType=INTEGER},
+		emp_name =
+		#{empName,jdbcType=VARCHAR},
+		emp_gender =
+		#{empGender,jdbcType=VARCHAR},
+		email = #{email,jdbcType=VARCHAR}
+		where
+		id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>
