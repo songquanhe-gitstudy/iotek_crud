@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.song.dao.DepartmentEntityDao;
 import com.song.dao.EmployeeEntityDao;
+import com.song.model.DepartmentEntity;
 import com.song.model.EmployeeEntity;
 
 /**
@@ -27,8 +28,8 @@ public class SqlTest extends SongBaseTest{
 	@Test
 	public void test() {
 		
-		/*departmentEntityDao.insertSelective(new DepartmentEntity(null, "财务部"));
-		employeeEntityDao.insertSelective(new EmployeeEntity(null, 1, "千寻", "女", "qianxun@qq.com"));
+		departmentEntityDao.insertSelective(new DepartmentEntity(null, "桌面组"));
+		/*employeeEntityDao.insertSelective(new EmployeeEntity(null, 1, "千寻", "女", "qianxun@qq.com"));
 		 */
 		//批量插入
 		/*EmployeeEntityDao mapper = sqlSession.getMapper(EmployeeEntityDao.class);
@@ -42,10 +43,10 @@ public class SqlTest extends SongBaseTest{
 		for (EmployeeEntity employeeEntity : list) {
 			System.out.println(employeeEntity);
 		}*/
-		Map<String, Integer> map = new HashMap<>();
+		/*Map<String, Integer> map = new HashMap<>();
 		map.put("songId", 1109);
 		EmployeeEntity findByid = employeeEntityDao.findByid(map);
-		System.out.println(findByid.getEmpName());
+		System.out.println(findByid.getEmpName());*/
 		
 		System.out.println("---------------完成-------------------");
 		
