@@ -45,18 +45,18 @@
 					<tr>
 						<th>#</th>
 						<th>empName</th>
-						<th>gender</th>
+						<th>empGender</th>
 						<th>email</th>
 						<th>deptName</th>
 						<th>操作</th>
 					</tr>
 					<c:forEach items="${pageInfo.list }" var="emp">
 						<tr>
-							<th>${emp.empId }</th>
+							<th>${emp.id }</th>
 							<th>${emp.empName }</th>
-							<th>${emp.gender=="M"?"男":"女" }</th>
+							<th>${emp.empGender=="男"?"男":"女" }</th>
 							<th>${emp.email }</th>
-							<th>${emp.department.deptName }</th>
+							<th>${emp.departmentEntity.deptName }</th>
 							<th>
 								<button class="btn btn-primary btn-sm">
 									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

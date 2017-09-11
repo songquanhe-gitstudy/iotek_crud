@@ -11,7 +11,7 @@ import com.song.dao.DepartmentEntityDao;
 
 /**
  *author:song
- *date:2017Äê7ÔÂ22ÈÕ
+ *date:2017å¹´7æœˆ22æ—¥
 **/
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})
@@ -20,7 +20,7 @@ public class SongBaseTest {
 	private DepartmentEntityDao departmentEntityDao;
 	
 	@Test
-	@Transactional   //±êÃ÷´Ë·½·¨ĞèÊ¹ÓÃÊÂÎñ  
+	@Transactional   
 	public void test() {
 		System.out.println("-------------------"+departmentEntityDao);
 	}

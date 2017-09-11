@@ -20,7 +20,7 @@ import com.github.pagehelper.PageInfo;
 import com.song.model.EmployeeEntity;
 
 /**
-
+-Spring提供的进行虚拟请求的测试类
 - 使用Spring测试模块提供的测试请求功能，测试curd请求的正确性
 - Spring4测试的时候，需要servlet3.0的支持
 - @author song
@@ -41,7 +41,7 @@ import com.song.model.EmployeeEntity;
   }
   @Test
   public void testPage() throws Exception {
-      //模拟请求拿到返回值
+      //模拟发送请求并拿到返回值
       MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/emps").param("pn", "5"))
       		.andReturn();
       
@@ -62,6 +62,15 @@ import com.song.model.EmployeeEntity;
       for (EmployeeEntity employee : list) {
       	System.out.println("ID："+employee.getDId()+"==>Name:"+employee.getEmpName());
       }
+     /*当前页码：5
+	     总页码：201
+	     总记录数：1001
+	     在页面需要连续显示的页码
+       3 4 5 6 7ID：1==>Name:048f219
+       ID：1==>Name:49d9f20
+       ID：1==>Name:91a1f21
+       ID：1==>Name:f021822
+       ID：1==>Name:ce83e23*/
   }
 
 }

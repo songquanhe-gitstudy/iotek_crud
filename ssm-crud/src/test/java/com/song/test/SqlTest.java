@@ -2,6 +2,7 @@ package com.song.test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
@@ -27,20 +28,20 @@ public class SqlTest extends SongBaseTest{
 
 	@Test
 	public void test() {
-		DepartmentEntity departmentEntity = new DepartmentEntity();
+		/*DepartmentEntity departmentEntity = new DepartmentEntity();
 		departmentEntity.setDeptName("上海网鱼信息科技有限公司");
 		System.out.println("-----"+departmentEntity.getDeptName()+"----------");
 		
-		departmentEntityDao.insertSelective(new DepartmentEntity(null, "桌面组"));
+		departmentEntityDao.insertSelective(new DepartmentEntity(null, "桌面组"));*/
 		/*employeeEntityDao.insertSelective(new EmployeeEntity(null, 1, "千寻", "女", "qianxun@qq.com"));
 		 */
 		//批量插入
-		/*EmployeeEntityDao mapper = sqlSession.getMapper(EmployeeEntityDao.class);
+		EmployeeEntityDao mapper = sqlSession.getMapper(EmployeeEntityDao.class);
 		
-		for (int i = 1; i < 1000; i++) {
+		for (int i = 0; i < 1000; i++) {
 			String name = UUID.randomUUID().toString().substring(0, 5)+i;
 			mapper.insertSelective(new EmployeeEntity(null, 1, name, "男", name+"@qq.com"));
-		}*/
+		}
 		/*//联合查找
 		List<EmployeeEntity> list = employeeEntityDao.findAll();
 		for (EmployeeEntity employeeEntity : list) {
