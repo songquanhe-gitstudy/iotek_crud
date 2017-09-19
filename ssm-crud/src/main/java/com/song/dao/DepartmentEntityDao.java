@@ -1,5 +1,7 @@
 package com.song.dao;
 
+import java.util.List;
+
 import com.song.model.DepartmentEntity;
 
 public interface DepartmentEntityDao extends IBaseDao<DepartmentEntity>{
@@ -14,4 +16,6 @@ public interface DepartmentEntityDao extends IBaseDao<DepartmentEntity>{
     int updateByPrimaryKeySelective(DepartmentEntity record);
 
     int updateByPrimaryKey(DepartmentEntity record);
+    
+    List<DepartmentEntity> findAllDept();
 }

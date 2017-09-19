@@ -23,4 +23,16 @@ public class EmploeeEntityService {
 		return list;
 	}
 
+	public void save(EmployeeEntity entity) {
+		employeeEntityDao.insertSelective(entity);
+	}
+
+	public EmployeeEntity findById(Integer id) {
+		return employeeEntityDao.selectByPrimaryKey(id);
+	}
+
+	public void update(EmployeeEntity entity) {
+		employeeEntityDao.updateByPrimaryKeySelective(entity);		
+	}
+
 }
