@@ -67,6 +67,7 @@
 			<tx:method name="*"/>
 			<!--以get开始的所有方法  -->
 			<tx:method name="get*" read-only="true"/>
+			<tx:method name="find*" read-only="true"/>
 		</tx:attributes>
 	</tx:advice>
 	

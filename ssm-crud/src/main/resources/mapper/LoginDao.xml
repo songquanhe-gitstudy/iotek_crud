@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.song.dao.IloginDao">
+	
+	<select id="findByEntity" resultType="com.song.model.LoginEntity">
+		select * from t_user_login where job_number=#{jobNumber} and password=#{password} 
+	</select>
+
+</mapper>

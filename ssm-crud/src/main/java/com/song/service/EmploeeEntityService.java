@@ -35,4 +35,8 @@ public class EmploeeEntityService {
 		employeeEntityDao.updateByPrimaryKeySelective(entity);		
 	}
 
+	public void deleteById(Integer id) {
+		employeeEntityDao.deleteByPrimaryKey(id);
+	}
+
 }

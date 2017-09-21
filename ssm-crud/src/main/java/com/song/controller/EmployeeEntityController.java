@@ -59,7 +59,16 @@ public class EmployeeEntityController {
 		
 		return CommonMsg.success();
 	}
-
+	
+	/**
+	 * 删除员工
+	 */
+	@RequestMapping(value="/delEmp/{id}", method=RequestMethod.POST)
+	public CommonMsg delEmp(@PathVariable("id")Integer id) {
+		employeeEntityService.deleteById(id);
+		return CommonMsg.success();
+	}
+	
 	/**
 	 * 需要导入jackson包
 	 * @param pn 页码
